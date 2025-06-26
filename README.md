@@ -33,7 +33,7 @@ jb build .
 
 ## Organização
 
-Tudo que se mexer no projeto deverá ser documentado da seguinte forma: Toda tarefa é uma **issue** e esta issue deve ter seu status atualizado através do **kanban** da aba [**Projects**](https://github.com/orgs/PETCC-UFRN/projects/3). Caso você deseje trabalhar em uma tarefa que ainda não foi aberta, abra ela usando o template disponível em `.github/issue_template/issue.md`.
+Tudo que se mexer no projeto deverá ser documentado da seguinte forma: Toda tarefa é uma **issue** e esta issue deve ter seu status atualizado através do **kanban** da aba [**Projects**](https://github.com/orgs/PETCC-UFRN/projects/3). Caso você deseje trabalhar em uma tarefa que ainda não foi aberta, abra ela usando template **Exemplo**.
 
 > [!TIP]
 > Na minha cabeça cada dia precisa de uma issue para **conteúdo** e outra para **formatação**
