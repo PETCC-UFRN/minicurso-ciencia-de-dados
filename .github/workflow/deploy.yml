@@ -1,0 +1,101 @@
+name: CI/CD com propagação e deploy
+
+on:
+  push:
+    branches:
+      - master
+      - dia-01
+      - dia-02
+      - dia-03
+      - dia-04
+      - dia-05
+
+jobs:
+  build-propagate-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # necessário para múltiplas branches
+
+      - name: Configurar usuário git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Atualização em cadeia das branches
+        # Se eu atualizar a master essas alterações seguem o fluxo: master -> dia-01 -> dia-02 -> ... -> dia-05
+        # Se eu atualizar a dia04 essas alterações seguem o fluxo: dia-04 -> dia-05
+        run: |
+          BRANCH_CHAIN=("master" "dia-01" "dia-02" "dia-03" "dia-04" "dia-05")
+          CURRENT_BRANCH="${GITHUB_REF##*/}"
+
+          FOUND=false
+          for BR in "${BRANCH_CHAIN[@]}"; do
+            if [ "$FOUND" = true ]; then
+              echo "➡️ Propagando alterações: $CURRENT_BRANCH → $BR"
+              git checkout "$BR"
+              git merge --no-edit "$CURRENT_BRANCH" || echo "⚠️ Conflito ao tentar mesclar em $BR (resolva manualmente depois)"
+              git push origin "$BR"
+              CURRENT_BRANCH="$BR"
+            fi
+            if [ "$BR" = "$CURRENT_BRANCH" ]; then
+              FOUND=true
+            fi
+          done
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Build do Jupyter Book
+        run: |
+          source venv/bin/activate
+          jb build .
+
+      - name: Verificar se é o dia de deploy
+        id: deploy-check
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          BRANCH="${GITHUB_REF##*/}"
+          SHOULD_DEPLOY=false
+
+          case "$BRANCH" in
+            master)
+              SHOULD_DEPLOY=true
+              ;;
+            dia-01)
+              [ "$TODAY" = "2025-08-04" ] && SHOULD_DEPLOY=true
+              ;;
+            dia-02)
+              [ "$TODAY" = "2025-08-05" ] && SHOULD_DEPLOY=true
+              ;;
+            dia-03)
+              [ "$TODAY" = "2025-08-06" ] && SHOULD_DEPLOY=true
+              ;;
+            dia-04)
+              [ "$TODAY" = "2025-08-07" ] && SHOULD_DEPLOY=true
+              ;;
+            dia-05)
+              [ "$TODAY" = "2025-08-08" ] && SHOULD_DEPLOY=true
+              ;;
+          esac
+
+          echo "should_deploy=$SHOULD_DEPLOY" >> $GITHUB_OUTPUT
+
+      - name: Deploy para GitHub Pages
+        if: steps.deploy-check.outputs.should_deploy == 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
+          destination_dir: ${{ github.ref_name }}
