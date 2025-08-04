@@ -6,6 +6,7 @@ root: intro
 chapters:
 - file: aulas/Visao_Geral
 - file: aulas/Limpeza
+- file: aulas/projetos/Projeto-dia01
 # - file: aulas/Analise_Exploratoria
 # - file: aulas/Data_Mining_e_Clustering
 # - file: aulas/Hipoteses_e_Testes
