@@ -6,9 +6,11 @@ Mucho Python.
 > Adicionem aqui o link do notebook dos dias aqui
 
 ## Notebooks das Aulas
-- [Dia 0](https://colab.research.google.com/drive/11rCqMQNNOFryohu-MwQtCNwY7CfYuPPw?authuser=1#scrollTo=BWkVWBl1ybEe)
-- [Dia 1](https://colab.research.google.com/drive/1ZsjYIi5EAu-iiJYIFbX-pqU_T6hJQsHq?usp=sharing)
-- ...
+- [Dia 1](https://colab.research.google.com/drive/11akEvY2Abo9mfq0oORvzRYZyJKCVBTI7?usp=drive_link)
+- [Dia 2](https://colab.research.google.com/drive/1zQG4x5x7iH9sRKLNILdvIUdw6LxaKj-Y?usp=drive_link)
+- [Dia 3](https://colab.research.google.com/drive/1Jcs-xl7nSoxBQ8foAAyqsn9TovFUkd0A?usp=drive_link)
+- [Dia 4](https://colab.research.google.com/drive/1c9hTNN2YqkS9BwiFHLOfUXNXGRdazBfx?usp=drive_link)
+- [Projeto]()
 
 ## Contribuições
 
