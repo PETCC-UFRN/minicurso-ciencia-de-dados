@@ -1,0 +1,34 @@
+name: Deploy dia-01 para GitHub Pages
+
+on:
+  push:
+    branches:
+      - dia-01
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 🧪 Criar e ativar venv, instalar dependências
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          jb build .
+
+      - name: 🚀 Deploy para GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build
+          publish_branch: gh-pages
+          force_orphan: true
