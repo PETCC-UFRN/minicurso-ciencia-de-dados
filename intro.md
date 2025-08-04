@@ -36,7 +36,7 @@ Utilizaremos:
 
 - [Python](https://www.python.org/)
 - [Jupyter Notebook](https://jupyter.org/)
-- [Google Colab](w)
+- [Google Colab](https://colab.google/)
 - Bibliotecas como [pandas](https://pandas.pydata.org/), [numpy](https://numpy.org/), [matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/), [scikit-learn](https://scikit-learn.org/stable/)
 
 Se você ainda não configurou o ambiente, pode ficar tranquilo. O curso é constituído basicamente por ferramentas online cuja configuração padrão já atende as necessidades básicas do curso.
