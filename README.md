@@ -10,7 +10,6 @@ Mucho Python.
 - [Dia 2](https://colab.research.google.com/drive/1zQG4x5x7iH9sRKLNILdvIUdw6LxaKj-Y?usp=drive_link)
 - [Dia 3](https://colab.research.google.com/drive/1Jcs-xl7nSoxBQ8foAAyqsn9TovFUkd0A?usp=drive_link)
 - [Dia 4](https://colab.research.google.com/drive/1c9hTNN2YqkS9BwiFHLOfUXNXGRdazBfx?usp=drive_link)
-- [Projeto]()
 
 ## Contribuições
 
