@@ -41,6 +41,10 @@ Utilizaremos:
 
 Se você ainda não configurou o ambiente, pode ficar tranquilo. O curso é constituído basicamente por ferramentas online cuja configuração padrão já atende as necessidades básicas do curso.
 
+:::{note}
+Acesse o [discord](https://discord.gg/UjC552gPVu) do curso!
+:::
+
 ## Certificação
 
 Ao fim do curso, você receberá uma **declaração de conclusão**, reconhecendo suas habilidades em ciência de dados, caso você tenha seguidos as diretrizes informadas pelos petianos(presença nas aulas, entrega do projeto, etc).
