@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Projeto - Dia 2: Análise Exploratória de Dados &#8212; Curso de Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aulas/projetos/Projeto-dia02';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Mining e Clustering, extraindo novas informações." href="../Data_Mining_e_Clustering.html" />
+    <link rel="prev" title="O que é Análise Exploratória" href="../Analise_Exploratoria.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pet-logo-light-theme.png" class="logo__image only-light" alt="Curso de Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/pet-logo-light-theme.png" class="logo__image only-dark" alt="Curso de Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Boas-vindas ao Curso de Ciência de Dados!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Visao_Geral.html">Introdução ao Minicurso de Ciência de Dados de 2025.2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Limpeza.html">Limpeza de dados: Visualizando e manipulando dados tabulares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Projeto-dia01.html">Projeto - Dia 1: Limpeza de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Analise_Exploratoria.html">O que é Análise Exploratória</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Projeto - Dia 2: Análise Exploratória de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_Mining_e_Clustering.html">Data Mining e Clustering, extraindo novas informações.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Hipoteses_e_Testes.html">Hipóteses e testes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Projeto-dia04.html">Projeto - Dia 4: Testes e Hipóteses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Storytelling_e_Relatorios.html">Storytelling e Criação de Relatórios em Ciência de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Projeto-dia05.html">Projeto - Dia 5: Storytelling e Criação de Relatórios</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PETCC-UFRN/material-minicurso-ciencia-de-dados" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PETCC-UFRN/material-minicurso-ciencia-de-dados/issues/new?title=Issue%20on%20page%20%2Faulas/projetos/Projeto-dia02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/aulas/projetos/Projeto-dia02.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Projeto - Dia 2: Análise Exploratória de Dados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuando-nossa-jornada">Continuando Nossa Jornada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-desafio-do-dia-2-explorando-os-dados-das-turmas-da-ufrn">O Desafio do Dia 2: Explorando os Dados das Turmas da UFRN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-de-aprendizagem">Objetivos de Aprendizagem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarefas-a-serem-realizadas-no-notebook">Tarefas a Serem Realizadas no Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-univariada">1. Análise Univariada</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-bivariada">2. Análise Bivariada</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-temporal">3. Análise Temporal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-por-segmentos">4. Análise por Segmentos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacao-de-insights-e-padroes">5. Identificação de Insights e Padrões</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perguntas-orientadoras">Perguntas Orientadoras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega">Entrega</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="projeto-dia-2-analise-exploratoria-de-dados">
+<h1>Projeto - Dia 2: Análise Exploratória de Dados<a class="headerlink" href="#projeto-dia-2-analise-exploratoria-de-dados" title="Link to this heading">#</a></h1>
+<section id="continuando-nossa-jornada">
+<h2>Continuando Nossa Jornada<a class="headerlink" href="#continuando-nossa-jornada" title="Link to this heading">#</a></h2>
+<p>Bem-vindos de volta ao nosso projeto de Análise de Dados das Turmas da UFRN! Esperamos que o trabalho de limpeza de dados do Dia 1 tenha sido bem-sucedido e que vocês agora tenham um dataset limpo e estruturado. Hoje, vamos dar o próximo passo fundamental em qualquer projeto de Ciência de Dados: a Análise Exploratória de Dados (EDA - Exploratory Data Analysis).</p>
+<p>A análise exploratória é onde os dados começam a “falar” conosco. É nesta etapa que descobrimos padrões, tendências, correlações e insights iniciais que irão guiar nossas análises mais avançadas nos próximos dias. Vocês irão transformar números e categorias em visualizações informativas e descobrir histórias escondidas nos dados das turmas da UFRN.</p>
+</section>
+<section id="o-desafio-do-dia-2-explorando-os-dados-das-turmas-da-ufrn">
+<h2>O Desafio do Dia 2: Explorando os Dados das Turmas da UFRN<a class="headerlink" href="#o-desafio-do-dia-2-explorando-os-dados-das-turmas-da-ufrn" title="Link to this heading">#</a></h2>
+<p>Hoje, vocês irão mergulhar profundamente nos dados limpos que prepararam ontem. O objetivo é compreender a distribuição das variáveis, identificar padrões interessantes, explorar relações entre diferentes características das turmas e formular hipóteses que poderão ser testadas nos próximos dias.</p>
+<p>A análise exploratória não é apenas sobre criar gráficos bonitos, é sobre fazer as perguntas certas aos dados e buscar respostas que possam gerar valor e insights acionáveis para a gestão acadêmica da UFRN.</p>
+<section id="objetivos-de-aprendizagem">
+<h3>Objetivos de Aprendizagem<a class="headerlink" href="#objetivos-de-aprendizagem" title="Link to this heading">#</a></h3>
+<p>Ao final deste dia, vocês deverão ser capazes de:</p>
+<ol class="arabic simple">
+<li><p><strong>Realizar Análise Univariada</strong>: Examinar cada variável individualmente, compreendendo sua distribuição, valores centrais, dispersão e identificando características peculiares.</p></li>
+<li><p><strong>Conduzir Análise Bivariada</strong>: Explorar relações entre pares de variáveis, identificando correlações, associações e padrões de dependência.</p></li>
+<li><p><strong>Aplicar Análise Multivariada Inicial</strong>: Investigar como múltiplas variáveis interagem simultaneamente, utilizando técnicas como análise de correlação e visualizações multidimensionais.</p></li>
+<li><p><strong>Criar Visualizações Eficazes</strong>: Utilizar bibliotecas como Matplotlib, Seaborn e Plotly para criar gráficos informativos e esteticamente agradáveis que comuniquem insights de forma clara.</p></li>
+<li><p><strong>Identificar Padrões Temporais</strong>: Analisar como as características das turmas evoluíram ao longo dos anos e períodos disponíveis no dataset.</p></li>
+<li><p><strong>Segmentar e Comparar Grupos</strong>: Comparar diferentes segmentos dos dados (ex: turmas presenciais vs. à distância, diferentes níveis de ensino, diferentes campi) para identificar diferenças significativas.</p></li>
+</ol>
+</section>
+<section id="tarefas-a-serem-realizadas-no-notebook">
+<h3>Tarefas a Serem Realizadas no Notebook<a class="headerlink" href="#tarefas-a-serem-realizadas-no-notebook" title="Link to this heading">#</a></h3>
+<p>Abra o notebook do Dia 1 e continue o trabalho criando uma nova seção para a análise exploratória.<br />
+Siga os passos abaixo:</p>
+<section id="analise-univariada">
+<h4>1. Análise Univariada<a class="headerlink" href="#analise-univariada" title="Link to this heading">#</a></h4>
+<p>Examine cada variável individualmente:</p>
+<p><strong>Variáveis Numéricas</strong>: Para colunas como ch_dedicada_periodo, capacidade_aluno, total_solicitacoes, ano, periodo, crie histogramas, boxplots e calcule estatísticas descritivas. Identifique a distribuição de cada variável, valores atípicos e características interessantes.</p>
+<p><strong>Variáveis Categóricas</strong>: Para colunas como nivel_ensino, campus_turma, tipo, distancia, crie gráficos de barras e tabelas de frequência. Analise a distribuição das categorias e identifique as mais e menos frequentes.</p>
+<p><strong>Variáveis Temporais</strong>: Para data_inicio, data_fim, ano, periodo, explore padrões sazonais, tendências ao longo do tempo e a duração típica das turmas.</p>
+</section>
+<section id="analise-bivariada">
+<h4>2. Análise Bivariada<a class="headerlink" href="#analise-bivariada" title="Link to this heading">#</a></h4>
+<p>Explore relações entre pares de variáveis:</p>
+<p><strong>Numérica vs. Numérica</strong>: Crie scatter plots para examinar correlações entre variáveis como capacidade de alunos vs. carga horária, total de solicitações vs. capacidade, etc. Calcule coeficientes de correlação.</p>
+<p><strong>Categórica vs. Numérica</strong>: Utilize boxplots ou violin plots para comparar distribuições de variáveis numéricas entre diferentes categorias (ex: carga horária por nível de ensino, capacidade por campus).</p>
+<p><strong>Categórica vs. Categórica</strong>: Crie tabelas de contingência e heatmaps para explorar associações entre variáveis categóricas (ex: modalidade à distância por nível de ensino, tipo de turma por campus).</p>
+</section>
+<section id="analise-temporal">
+<h4>3. Análise Temporal<a class="headerlink" href="#analise-temporal" title="Link to this heading">#</a></h4>
+<p>Investigue como as características das turmas mudaram ao longo do tempo:</p>
+<p>Analise tendências anuais no número de turmas, capacidade média, distribuição por nível de ensino, crescimento da modalidade à distância, etc. Crie gráficos de linha temporal e identifique padrões sazonais entre os períodos letivos.</p>
+</section>
+<section id="analise-por-segmentos">
+<h4>4. Análise por Segmentos<a class="headerlink" href="#analise-por-segmentos" title="Link to this heading">#</a></h4>
+<p>Compare diferentes grupos de turmas:</p>
+<p>Segmente os dados por características importantes (campus, nível de ensino, modalidade) e compare métricas-chave entre os segmentos. Identifique quais campi oferecem mais turmas, quais níveis de ensino têm maior capacidade média, como a modalidade à distância se distribui, etc.</p>
+</section>
+<section id="identificacao-de-insights-e-padroes">
+<h4>5. Identificação de Insights e Padrões<a class="headerlink" href="#identificacao-de-insights-e-padroes" title="Link to this heading">#</a></h4>
+<p>Com base nas análises anteriores, identifique e documente:</p>
+<p>Padrões interessantes que emergiram dos dados, possíveis anomalias ou comportamentos inesperados, relações fortes entre variáveis que merecem investigação adicional, diferenças significativas entre grupos ou períodos, e tendências temporais relevantes para a gestão acadêmica.</p>
+</section>
+</section>
+<section id="perguntas-orientadoras">
+<h3>Perguntas Orientadoras<a class="headerlink" href="#perguntas-orientadoras" title="Link to this heading">#</a></h3>
+<p>Para guiar sua análise exploratória, considere estas perguntas:</p>
+<p>Como a oferta de turmas da UFRN evoluiu ao longo dos anos?<br />
+Quais campi concentram a maior parte da oferta acadêmica?<br />
+Existe diferença na capacidade média das turmas entre diferentes níveis de ensino?<br />
+Como a modalidade à distância se distribui entre os diferentes campi e níveis?<br />
+Há sazonalidade na oferta de turmas entre os períodos letivos?<br />
+Qual a relação entre a capacidade das turmas e o número de solicitações de matrícula?<br />
+Existem padrões na carga horária dedicada pelos docentes?<br />
+Há diferenças significativas entre turmas presenciais e à distância em termos de capacidade e demanda?</p>
+</section>
+<section id="entrega">
+<h3>Entrega<a class="headerlink" href="#entrega" title="Link to this heading">#</a></h3>
+<p>O notebook atualizado deve ser entregue até as <strong>12:00 do dia 06/08 no email: <a class="reference external" href="mailto:petcc&#37;&#52;&#48;dimap&#46;ufrn&#46;br">petcc<span>&#64;</span>dimap<span>&#46;</span>ufrn<span>&#46;</span>br</a></strong>. Certifiquem-se de incluir:</p>
+<p>Visualizações claras e bem rotuladas para cada análise realizada. Interpretações escritas em células Markdown explicando o que cada gráfico ou análise revela. Pelo menos 5 insights principais descobertos durante a exploração. Código limpo e bem comentado, com células organizadas logicamente.</p>
+<p>Lembrem-se: a análise exploratória é um processo iterativo e criativo. Não tenham medo de explorar diferentes ângulos dos dados e fazer perguntas que não foram explicitamente mencionadas neste enunciado. Os melhores insights muitas vezes surgem da curiosidade e da investigação além do óbvio.</p>
+<p>Boa exploração e até amanhã!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aulas/projetos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Analise_Exploratoria.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">O que é Análise Exploratória</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Data_Mining_e_Clustering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Mining e Clustering, extraindo novas informações.</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuando-nossa-jornada">Continuando Nossa Jornada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-desafio-do-dia-2-explorando-os-dados-das-turmas-da-ufrn">O Desafio do Dia 2: Explorando os Dados das Turmas da UFRN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-de-aprendizagem">Objetivos de Aprendizagem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarefas-a-serem-realizadas-no-notebook">Tarefas a Serem Realizadas no Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-univariada">1. Análise Univariada</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-bivariada">2. Análise Bivariada</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-temporal">3. Análise Temporal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-por-segmentos">4. Análise por Segmentos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacao-de-insights-e-padroes">5. Identificação de Insights e Padrões</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perguntas-orientadoras">Perguntas Orientadoras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega">Entrega</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PET CC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

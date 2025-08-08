@@ -1,0 +1,1185 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hipóteses e testes &#8212; Curso de Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aulas/Hipoteses_e_Testes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Projeto - Dia 4: Testes e Hipóteses" href="projetos/Projeto-dia04.html" />
+    <link rel="prev" title="Data Mining e Clustering, extraindo novas informações." href="Data_Mining_e_Clustering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pet-logo-light-theme.png" class="logo__image only-light" alt="Curso de Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../_static/pet-logo-light-theme.png" class="logo__image only-dark" alt="Curso de Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Boas-vindas ao Curso de Ciência de Dados!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Visao_Geral.html">Introdução ao Minicurso de Ciência de Dados de 2025.2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Limpeza.html">Limpeza de dados: Visualizando e manipulando dados tabulares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projetos/Projeto-dia01.html">Projeto - Dia 1: Limpeza de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analise_Exploratoria.html">O que é Análise Exploratória</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projetos/Projeto-dia02.html">Projeto - Dia 2: Análise Exploratória de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Mining_e_Clustering.html">Data Mining e Clustering, extraindo novas informações.</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hipóteses e testes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="projetos/Projeto-dia04.html">Projeto - Dia 4: Testes e Hipóteses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Storytelling_e_Relatorios.html">Storytelling e Criação de Relatórios em Ciência de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projetos/Projeto-dia05.html">Projeto - Dia 5: Storytelling e Criação de Relatórios</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PETCC-UFRN/material-minicurso-ciencia-de-dados" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PETCC-UFRN/material-minicurso-ciencia-de-dados/issues/new?title=Issue%20on%20page%20%2Faulas/Hipoteses_e_Testes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/aulas/Hipoteses_e_Testes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hipóteses e testes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hipóteses e testes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-estatistica-e-formulacao-de-hipoteses">Inferência estatística e formulação de hipóteses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-inferencia-estatistica">O que é Inferência Estatística?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipoteses-nula-e-alternativa">Hipóteses: Nula e Alternativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erros-tipo-i-e-ii">Erros Tipo I e II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-valor-e-intervalo-de-confianca">p-valor e Intervalo de Confiança</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-quiz-interativo">Mini quiz interativo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-teste-e-quando-usar">Tipos de teste e quando usar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrico-vs-nao-parametrico">Paramétrico vs. Não-paramétrico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premissas-essenciais-dos-testes-parametricos">Premissas Essenciais dos Testes Paramétricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuicao-normal-gaussiana">1. Distribuição Normal (Gaussiana)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homogeneidade-de-variancias-homocedasticidade">2. Homogeneidade de Variâncias (Homocedasticidade)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxograma-de-decisao-aprimorado">Fluxograma de Decisão Aprimorado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testes-abordados-na-pratica">Testes Abordados na Prática</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-com-testes-no-python">Prática com testes no Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-1-teste-de-medias">Prática 4 parte 1: Teste de Médias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-1-teste-de-medias-com-o-dataset-da-ufad">Prática 4 parte 1: Teste de Médias com o dataset da UFAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-2-associacao-entre-variaveis-categoricas-na-ufad">Prática 4 parte 2: Associação entre variáveis categóricas na UFAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-bonus-teste-de-medias-com-mais-de-dois-grupos-anova">Exemplo Bônus: Teste de Médias com Mais de Dois Grupos (ANOVA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-do-conteudo">Quiz do Conteúdo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questoes">Questões</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#respostas">Respostas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-do-dia-4">Projeto do Dia 4!</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hipoteses-e-testes">
+<h1>Hipóteses e testes<a class="headerlink" href="#hipoteses-e-testes" title="Link to this heading">#</a></h1>
+<section id="inferencia-estatistica-e-formulacao-de-hipoteses">
+<h2>Inferência estatística e formulação de hipóteses<a class="headerlink" href="#inferencia-estatistica-e-formulacao-de-hipoteses" title="Link to this heading">#</a></h2>
+<p>No dia anterior, exploramos dados para encontrar padrões com Data Mining. Hoje, vamos dar um passo adiante e aprender a usar amostras de dados para fazer afirmações sobre uma população inteira. Esse processo é chamado de <strong>inferência estatística</strong>. Muitas vezes, a mineração de dados nos ajuda a formular as perguntas que a inferência estatística irá responder formalmente.</p>
+<p>A base da inferência é a formulação e o teste de hipóteses, que nos permitem tomar decisões baseadas em evidências estatísticas, e não apenas em intuição.</p>
+<section id="o-que-e-inferencia-estatistica">
+<h3>O que é Inferência Estatística?<a class="headerlink" href="#o-que-e-inferencia-estatistica" title="Link to this heading">#</a></h3>
+<p>É o processo de usar dados de uma <strong>amostra</strong> para tirar conclusões (ou seja, “inferir”) sobre uma <strong>população</strong> maior da qual a amostra foi retirada.</p>
+<ul class="simple">
+<li><p><strong>População</strong>: O conjunto completo de todos os itens ou indivíduos de interesse. Ex: Todos os imóveis à venda em uma cidade.</p></li>
+<li><p><strong>Amostra</strong>: Um subconjunto da população que é selecionado para análise. Ex: 2.000 imóveis selecionados aleatoriamente dessa cidade.</p></li>
+</ul>
+<p>Como raramente temos acesso a toda a população (por custo, tempo ou inviabilidade), trabalhamos com amostras para estimar características da população.</p>
+</section>
+<section id="hipoteses-nula-e-alternativa">
+<h3>Hipóteses: Nula e Alternativa<a class="headerlink" href="#hipoteses-nula-e-alternativa" title="Link to this heading">#</a></h3>
+<p>Para testar uma afirmação, formulamos duas hipóteses opostas:</p>
+<ul class="simple">
+<li><p><strong>Hipótese Nula (<span class="math notranslate nohighlight">\(H_0\)</span>)</strong>: É a afirmação padrão, o status quo. Geralmente, ela propõe que <strong>não há efeito, não há diferença ou não há relação</strong>. Ex: “Não há diferença no preço médio dos imóveis com e sem garagem”.</p></li>
+<li><p><strong>Hipótese Alternativa (<span class="math notranslate nohighlight">\(H_a\)</span> ou <span class="math notranslate nohighlight">\(H_1\)</span>)</strong>: É a afirmação que contradiz a hipótese nula. Ela propõe que <strong>há um efeito, há uma diferença ou há uma relação</strong>. Ex: “O preço médio dos imóveis com garagem é diferente do preço dos imóveis sem garagem”.</p></li>
+</ul>
+<p>O objetivo de um teste de hipóteses é coletar evidências para <strong>rejeitar a hipótese nula</strong> em favor da hipótese alternativa.</p>
+</section>
+<section id="erros-tipo-i-e-ii">
+<h3>Erros Tipo I e II<a class="headerlink" href="#erros-tipo-i-e-ii" title="Link to this heading">#</a></h3>
+<p>Ao tomar uma decisão, corremos o risco de cometer dois tipos de erros:</p>
+<ul class="simple">
+<li><p><strong>Erro Tipo I (Falso Positivo)</strong>: Rejeitar a hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) quando ela é, na verdade, verdadeira. (Ex: Concluir que há uma diferença de preço quando não há).</p></li>
+<li><p><strong>Erro Tipo II (Falso Negativo)</strong>: Falhar em rejeitar a hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) quando ela é, na verdade, falsa. (Ex: Não encontrar uma diferença de preço que realmente existe).</p></li>
+</ul>
+</section>
+<section id="p-valor-e-intervalo-de-confianca">
+<h3>p-valor e Intervalo de Confiança<a class="headerlink" href="#p-valor-e-intervalo-de-confianca" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>p-valor</strong>: É a probabilidade de observar os dados da nossa amostra (ou dados mais extremos) se a hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) for verdadeira.</p>
+<ul>
+<li><p><strong>Se o p-valor for baixo</strong> (geralmente &lt; 0.05), consideramos a evidência contra <span class="math notranslate nohighlight">\(H_0\)</span> forte o suficiente para rejeitá-la.</p></li>
+<li><p><strong>Se o p-valor for alto</strong> (geralmente ≥ 0.05), não temos evidências suficientes para rejeitar <span class="math notranslate nohighlight">\(H_0\)</span>.
+O número 0.05 é chamado de nível de significância e o valor 0.05 é apenas uma convenção. O nível de significância pode mudar dependendo do rigor do projeto ao definir a validade ou não da hipótese nula.</p></li>
+</ul>
+</li>
+<li><p><strong>Intervalo de Confiança (IC)</strong>: É uma faixa de valores onde temos um certo grau de confiança (ex: 95%) de que o verdadeiro parâmetro da população se encontra. Se o valor da hipótese nula (ex: diferença de zero) não estiver no intervalo, podemos rejeitá-la.</p></li>
+</ul>
+</section>
+<section id="mini-quiz-interativo">
+<h3>Mini quiz interativo<a class="headerlink" href="#mini-quiz-interativo" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Se queremos provar que um novo tratamento médico é eficaz, qual seria a Hipótese Nula (<span class="math notranslate nohighlight">\(H_0\)</span>)?</p></li>
+<li><p>Um p-valor de 0.03 nos leva a qual decisão sobre a <span class="math notranslate nohighlight">\(H_0\)</span>?</p></li>
+<li><p>O que significa cometer um Erro Tipo II quando a hipótese nula é de que um alarme antigo é melhor que um novo?</p></li>
+</ol>
+</section>
+</section>
+<section id="tipos-de-teste-e-quando-usar">
+<h2>Tipos de teste e quando usar<a class="headerlink" href="#tipos-de-teste-e-quando-usar" title="Link to this heading">#</a></h2>
+<p>A escolha do teste estatístico correto é crucial para a validade da sua análise. A decisão depende principalmente de:</p>
+<ol class="arabic simple">
+<li><p>O <strong>tipo de dados</strong> que você tem (numérico, categórico).</p></li>
+<li><p>A <strong>pergunta</strong> que você quer responder (comparar médias, verificar associação).</p></li>
+<li><p>As <strong>suposições</strong> que o teste exige.</p></li>
+</ol>
+<section id="parametrico-vs-nao-parametrico">
+<h3>Paramétrico vs. Não-paramétrico<a class="headerlink" href="#parametrico-vs-nao-parametrico" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Testes Paramétricos</strong>: Exigem que os dados sigam certas premissas, como a <strong>distribuição normal</strong> e a <strong>homogeneidade de variâncias</strong>. São considerados mais “poderosos” (maior chance de detectar um efeito real) se as premissas forem atendidas.</p></li>
+<li><p><strong>Testes Não-paramétricos</strong>: Não exigem que os dados sigam uma distribuição específica. São mais robustos e podem ser usados quando as premissas dos testes paramétricos não são satisfeitas.</p></li>
+</ul>
+</section>
+<section id="premissas-essenciais-dos-testes-parametricos">
+<h3>Premissas Essenciais dos Testes Paramétricos<a class="headerlink" href="#premissas-essenciais-dos-testes-parametricos" title="Link to this heading">#</a></h3>
+<p>Para usar testes como o Teste t com confiança, precisamos checar duas condições principais nos nossos dados.</p>
+<section id="distribuicao-normal-gaussiana">
+<h4>1. Distribuição Normal (Gaussiana)<a class="headerlink" href="#distribuicao-normal-gaussiana" title="Link to this heading">#</a></h4>
+<p>A distribuição dos dados deve se assemelhar a um “sino” (curva de Gauss), onde a maioria dos valores se concentra em torno da média.</p>
+<ul class="simple">
+<li><p><strong>Por que é importante?</strong> A matemática do Teste t usa a média e o desvio padrão para calcular a probabilidade (o <em>p-valor</em>) de uma diferença ter ocorrido ao acaso. Em uma distribuição normal, a média e o desvio padrão são descritores confiáveis do centro e da dispersão dos dados. Se a distribuição não é normal, esses descritores perdem a confiabilidade, e o resultado do teste pode ser inválido.</p></li>
+<li><p><strong>Como verificar a normalidade?</strong></p>
+<ul>
+<li><p><strong>Visualmente</strong>: Com <strong>Histogramas</strong> ou <strong>Q-Q Plots</strong> (Quantile-Quantile plots). Um Q-Q plot mostra os quantis dos seus dados contra os quantis de uma distribuição normal teórica; se os pontos formam uma linha reta, é um bom sinal de normalidade.</p></li>
+<li><p><strong>Estatisticamente</strong>: Com testes de hipótese como o <strong>Teste de Shapiro-Wilk</strong> ou <strong>Kolmogorov-Smirnov</strong>. O teste de Shapiro-Wilk é geralmente mais recomendado para amostras menores.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="homogeneidade-de-variancias-homocedasticidade">
+<h4>2. Homogeneidade de Variâncias (Homocedasticidade)<a class="headerlink" href="#homogeneidade-de-variancias-homocedasticidade" title="Link to this heading">#</a></h4>
+<p>Ao comparar dois ou mais grupos, a variância (a medida de dispersão dos dados) de cada grupo deve ser aproximadamente a mesma.</p>
+<ul class="simple">
+<li><p><strong>Por que é importante?</strong> Se um grupo tem dados muito mais espalhados que o outro, comparar suas médias diretamente pode ser enganoso. O teste assume que os grupos são comparáveis não apenas em suas médias, mas também em sua dispersão.</p></li>
+<li><p><strong>Como verificar a homogeneidade de variâncias?</strong></p>
+<ul>
+<li><p><strong>Estatisticamente</strong>: O <strong>Teste de Levene</strong> é o mais comum para verificar se dois ou mais grupos têm variâncias iguais.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="fluxograma-de-decisao-aprimorado">
+<h3>Fluxograma de Decisão Aprimorado<a class="headerlink" href="#fluxograma-de-decisao-aprimorado" title="Link to this heading">#</a></h3>
+<p><em>Para comparar a média de duas amostras independentes:</em></p>
+<ol class="arabic simple">
+<li><p><strong>Teste de Normalidade</strong> (ex: Shapiro-Wilk) em ambos os grupos. Os dados são normalmente distribuídos?</p>
+<ul class="simple">
+<li><p><strong>Não</strong>: Use o <strong>Teste de Mann-Whitney U</strong> (não-paramétrico). <strong>FIM</strong>.</p></li>
+<li><p><strong>Sim</strong>: Prossiga para o passo 2.</p></li>
+</ul>
+</li>
+<li><p><strong>Teste de Homogeneidade de Variâncias</strong> (ex: Teste de Levene). As variâncias são iguais?</p>
+<ul class="simple">
+<li><p><strong>Sim</strong>: Use o <strong>Teste t de Student</strong> (paramétrico padrão).</p></li>
+<li><p><strong>Não</strong>: Use o <strong>Teste t de Welch</strong> (variação do Teste t que não exige variâncias iguais).</p></li>
+</ul>
+</li>
+</ol>
+<p><em>Para verificar a associação entre duas variáveis categóricas:</em></p>
+<ol class="arabic simple">
+<li><p>Use o <strong>Teste Qui-quadrado</strong>.</p></li>
+</ol>
+</section>
+<section id="testes-abordados-na-pratica">
+<h3>Testes Abordados na Prática<a class="headerlink" href="#testes-abordados-na-pratica" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Teste t para amostras independentes</strong>: Compara as médias de dois grupos independentes para ver se são estatisticamente diferentes. (Subdividido em Teste t de Student e Welch com base na variância).</p></li>
+<li><p><strong>Teste t para amostras pareadas</strong>: Usado quando medições são feitas nos mesmos sujeitos em momentos diferentes (ex: o peso de 10 pessoas antes e depois de uma dieta) ou em pares relacionados (ex: o QI de irmãos).</p></li>
+<li><p><strong>Teste de Mann-Whitney U</strong>: Versão não-paramétrica do teste t para amostras independentes, compara as distribuições de dois grupos.</p></li>
+<li><p><strong>Teste de Wilcoxon signed-rank</strong>: Versão não-paramétrica do teste t para amostras pareadas.</p></li>
+<li><p><strong>Teste Qui-quadrado (<span class="math notranslate nohighlight">\(\chi^2\)</span>)</strong>: Verifica se existe uma associação significativa entre duas variáveis categóricas.</p></li>
+<li><p><strong>ANOVA</strong>: Apenas como menção, é usada para comparar as médias de três ou mais grupos.</p></li>
+<li><p><strong>Teste de Kruskal-Wallis</strong>: Apenas como menção, é a vrsão análoga não-paramétrica da ANOVA.</p></li>
+</ul>
+</section>
+</section>
+<section id="pratica-com-testes-no-python">
+<h2>Prática com testes no Python<a class="headerlink" href="#pratica-com-testes-no-python" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Célula de Carga e Limpeza</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># 1. Carregar o dataset</span>
+<span class="n">df_universidade</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_universidade_ufad.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Limpeza Rápida (essencial para os testes funcionarem)</span>
+<span class="c1"># (Esta etapa reforça a importância do pré-processamento visto em aulas anteriores)</span>
+
+<span class="c1"># 2.1 Padronizando &#39;Curso&#39;</span>
+<span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Curso&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Curso&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="s1">&#39;eng. de software&#39;</span><span class="p">:</span> <span class="s1">&#39;engenharia de software&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;computacao&#39;</span><span class="p">:</span> <span class="s1">&#39;ciência da computação&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;administracao&#39;</span><span class="p">:</span> <span class="s1">&#39;administração&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># 2.2 Corrigindo &#39;Horas_Atividade_Extra&#39; (Exemplo, não usaremos neste teste)</span>
+<span class="n">mapa_texto_inverso</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cinco&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;oito&#39;</span><span class="p">:</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;dez&#39;</span><span class="p">:</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;doze&#39;</span><span class="p">:</span> <span class="s1">&#39;12&#39;</span><span class="p">}</span>
+<span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">mapa_texto_inverso</span><span class="p">)</span>
+<span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Horas_Atividade_Extra&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+
+<span class="c1"># 2.3 Preenchendo NaNs em &#39;Fraternidade&#39;</span>
+<span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Não Informado&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Renomeando para &#39;df&#39; para manter a consistência com o resto do notebook original</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_universidade</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset da UFAD carregado e limpo. Pronto para os testes.&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># 1. Carregar o dataset</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">df_universidade</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_universidade_ufad.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># 2. Limpeza Rápida (essencial para os testes funcionarem)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># (Esta etapa reforça a importância do pré-processamento visto em aulas anteriores)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> 
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># 2.1 Padronizando &#39;Curso&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Curso&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_universidade</span><span class="p">[</span><span class="s1">&#39;Curso&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="s1">&#39;eng. de software&#39;</span><span class="p">:</span> <span class="s1">&#39;engenharia de software&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="s1">&#39;computacao&#39;</span><span class="p">:</span> <span class="s1">&#39;ciência da computação&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="s1">&#39;administracao&#39;</span><span class="p">:</span> <span class="s1">&#39;administração&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="p">})</span>
+
+<span class="nn">File ~/work/minicurso-ciencia-de-dados/minicurso-ciencia-de-dados/venv/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/work/minicurso-ciencia-de-dados/minicurso-ciencia-de-dados/venv/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/work/minicurso-ciencia-de-dados/minicurso-ciencia-de-dados/venv/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/work/minicurso-ciencia-de-dados/minicurso-ciencia-de-dados/venv/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/work/minicurso-ciencia-de-dados/minicurso-ciencia-de-dados/venv/lib/python3.10/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;dataset_universidade_ufad.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pratica-4-parte-1-teste-de-medias">
+<h3>Prática 4 parte 1: Teste de Médias<a class="headerlink" href="#pratica-4-parte-1-teste-de-medias" title="Link to this heading">#</a></h3>
+<p><strong>Situação</strong>: Uma imobiliária acredita que imóveis com garagem são, em média, mais caros que imóveis sem garagem.
+<strong>Pergunta</strong>: A diferença de preço entre imóveis com e sem garagem na nossa amostra é estatisticamente significativa?</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: O preço médio de imóveis com garagem é <strong>igual</strong> ao preço médio dos sem garagem.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_a\)</span></strong>: O preço médio de imóveis com garagem é <strong>diferente</strong> do preço médio dos sem garagem.</p></li>
+</ul>
+</section>
+<section id="pratica-4-parte-1-teste-de-medias-com-o-dataset-da-ufad">
+<h3>Prática 4 parte 1: Teste de Médias com o dataset da UFAD<a class="headerlink" href="#pratica-4-parte-1-teste-de-medias-com-o-dataset-da-ufad" title="Link to this heading">#</a></h3>
+<p><strong>Situação</strong>: A reitoria da UFAD quer saber se o programa de bolsas está associado a um desempenho acadêmico diferente.
+<strong>Pergunta</strong>: O Coeficiente de Rendimento Acadêmico (CRA) médio de alunos bolsistas é estatisticamente diferente do CRA médio de alunos não bolsistas?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: O CRA médio de alunos bolsistas é <strong>igual</strong> ao CRA médio dos não bolsistas.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_a\)</span></strong>: O CRA médio de alunos bolsistas é <strong>diferente</strong> do CRA médio dos não bolsistas.</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Célula de diagnóstico</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;ID_Aluno&#39;, &#39;Nome&#39;, &#39;Ano_Ingresso&#39;, &#39;Ano_Saida_Esperado&#39;,
+       &#39;Periodo_Atual&#39;, &#39;Curso&#39;, &#39;Fraternidade&#39;, &#39;CRA&#39;, &#39;Possui_Bolsa&#39;,
+       &#39;Taxa_Mensalidade&#39;, &#39;Horas_Atividade_Extra&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Análise Visual ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Possui_Bolsa&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;CRA&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Possui_Bolsa&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparação do CRA entre Alunos Bolsistas e Não Bolsistas&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Possui Bolsa?&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Coeficiente de Rendimento (CRA)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Separar as amostras para os testes</span>
+<span class="n">bolsistas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Possui_Bolsa&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;CRA&#39;</span><span class="p">]</span>
+<span class="n">nao_bolsistas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Possui_Bolsa&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">][</span><span class="s1">&#39;CRA&#39;</span><span class="p">]</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1">#---------------------------------------------------</span>
+<span class="c1"># Teste 1: Teste t para amostras independentes (Paramétrico)</span>
+<span class="c1">#---------------------------------------------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Teste t (Comparação de Médias) ---&quot;</span><span class="p">)</span>
+<span class="c1"># H0: As médias de CRA são iguais.</span>
+<span class="c1"># Ha: As médias de CRA são diferentes.</span>
+<span class="n">t_stat</span><span class="p">,</span> <span class="n">p_valor_t</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">bolsistas</span><span class="p">,</span> <span class="n">nao_bolsistas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estatística t: </span><span class="si">{</span><span class="n">t_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-valor do Teste t: </span><span class="si">{</span><span class="n">p_valor_t</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_valor_t</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: Rejeitamos a hipótese nula (H0). A diferença nas MÉDIAS de CRA é estatisticamente significativa.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: Falhamos em rejeitar a hipótese nula (H0). Não há evidência de diferença significativa nas MÉDIAS de CRA.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># Teste 2: Teste de Mann-Whitney U (Não-Paramétrico) - TESTE BILATERAL (TWO-SIDED)</span>
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Teste de Mann-Whitney U (Comparação de Distribuições) ---&quot;</span><span class="p">)</span>
+<span class="c1"># H0: As distribuições de CRA são iguais para os dois grupos.</span>
+<span class="c1"># Ha: As distribuições de CRA são DIFERENTES entre os dois grupos.</span>
+<span class="n">u_stat</span><span class="p">,</span> <span class="n">p_valor_mw</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">bolsistas</span><span class="p">,</span> <span class="n">nao_bolsistas</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;two-sided&#39;</span><span class="p">)</span> <span class="c1"># &#39;two-sided&#39; é o padrão</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estatística U: </span><span class="si">{</span><span class="n">u_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-valor do Teste de Mann-Whitney (Bilateral): </span><span class="si">{</span><span class="n">p_valor_mw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_valor_mw</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: Rejeitamos a hipótese nula (H0). Existe uma diferença estatisticamente significativa entre as DISTRIBUIÇÕES de CRA dos dois grupos.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: Falhamos em rejeitar a hipótese nula (H0). Não há evidência de uma diferença significativa entre as DISTRIBUIÇÕES de CRA dos dois grupos.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e3372e44e8c0f4c2077942953b60ea6d109b0abe9ef0c7328bfe128dbf639176.png" src="../_images/e3372e44e8c0f4c2077942953b60ea6d109b0abe9ef0c7328bfe128dbf639176.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Teste t (Comparação de Médias) ---
+Estatística t: 0.3543
+P-valor do Teste t: 0.7233
+Resultado: Falhamos em rejeitar a hipótese nula (H0). Não há evidência de diferença significativa nas MÉDIAS de CRA.
+
+--- Teste de Mann-Whitney U (Comparação de Distribuições) ---
+Estatística U: 30590.5000
+P-valor do Teste de Mann-Whitney (Bilateral): 0.7955
+Resultado: Falhamos em rejeitar a hipótese nula (H0). Não há evidência de uma diferença significativa entre as DISTRIBUIÇÕES de CRA dos dois grupos.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pratica-4-parte-2-associacao-entre-variaveis-categoricas-na-ufad">
+<h3>Prática 4 parte 2: Associação entre variáveis categóricas na UFAD<a class="headerlink" href="#pratica-4-parte-2-associacao-entre-variaveis-categoricas-na-ufad" title="Link to this heading">#</a></h3>
+<p><strong>Situação</strong>: Um grupo de pesquisa estudantil quer saber se alunos de fraternidades têm uma proporção diferente de bolsas de estudo em comparação com alunos que não participam de fraternidades.
+<strong>Pergunta</strong>: Existe uma associação entre participar de uma fraternidade e possuir bolsa de estudos?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: Não há associação entre a Fraternidade e Possuir Bolsa (as variáveis são independentes).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_a\)</span></strong>: Existe uma associação entre a Fraternidade e Possuir Bolsa.</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aplicação do teste Qui-quadrado</span>
+
+<span class="c1"># 1. Criar a tabela de contingência</span>
+<span class="n">tabela_contingencia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Possui_Bolsa&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabela de Contingência:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabela_contingencia</span><span class="p">)</span>
+
+<span class="c1"># 2. Realizar o teste Qui-quadrado</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p_valor_chi</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">tabela_contingencia</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estatística Qui-quadrado: </span><span class="si">{</span><span class="n">chi2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-valor do Teste Qui-quadrado: </span><span class="si">{</span><span class="n">p_valor_chi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Graus de Liberdade (dof): </span><span class="si">{</span><span class="n">dof</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Interpretação</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="k">if</span> <span class="n">p_valor_chi</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rejeitamos a hipótese nula (H0). Existe uma associação estatisticamente significativa entre as variáveis.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Falhamos em rejeitar a hipótese nula (H0). Não há evidência de associação entre as variáveis.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabela de Contingência:
+Possui_Bolsa   False  True 
+Fraternidade               
+Alpha             40     39
+Beta              42     29
+Delta             48     33
+Epsilon           33     40
+Gamma             44     34
+Nenhuma           50     43
+Não Informado     15     10
+
+Estatística Qui-quadrado: 4.8162
+P-valor do Teste Qui-quadrado: 0.5676
+Graus de Liberdade (dof): 6
+
+Falhamos em rejeitar a hipótese nula (H0). Não há evidência de associação entre as variáveis.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exemplo-bonus-teste-de-medias-com-mais-de-dois-grupos-anova">
+<h3>Exemplo Bônus: Teste de Médias com Mais de Dois Grupos (ANOVA)<a class="headerlink" href="#exemplo-bonus-teste-de-medias-com-mais-de-dois-grupos-anova" title="Link to this heading">#</a></h3>
+<p><strong>Situação</strong>: A reitoria agora quer saber se o desempenho acadêmico varia entre as diferentes fraternidades. Como temos mais de dois grupos (Alpha, Beta, Gamma, etc.), o Teste t não é adequado. Usaremos a ANOVA.
+<strong>Pergunta</strong>: O CRA médio dos alunos difere entre as diferentes fraternidades?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: As médias de CRA são <strong>iguais</strong> para todas as fraternidades.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_a\)</span></strong>: Pelo menos uma das fraternidades tem uma média de CRA <strong>diferente</strong> das outras.</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Visualização com Boxplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRA&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição de CRA por Fraternidade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Coeficiente de Rendimento (CRA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 2. Preparando os dados para o teste ANOVA</span>
+<span class="c1"># A função f_oneway espera cada grupo como um argumento separado</span>
+<span class="n">grupos_fraternidade</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">amostras</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fraternidade&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">grupo</span><span class="p">][</span><span class="s1">&#39;CRA&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">grupo</span> <span class="ow">in</span> <span class="n">grupos_fraternidade</span><span class="p">]</span>
+
+<span class="c1"># 3. Realizando o Teste ANOVA</span>
+<span class="n">f_stat</span><span class="p">,</span> <span class="n">p_valor_anova</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f_oneway</span><span class="p">(</span><span class="o">*</span><span class="n">amostras</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estatística F: </span><span class="si">{</span><span class="n">f_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-valor da ANOVA: </span><span class="si">{</span><span class="n">p_valor_anova</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Interpretação</span>
+<span class="k">if</span> <span class="n">p_valor_anova</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rejeitamos a Hipótese Nula (H0).&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Existe uma diferença estatisticamente significativa entre as médias de CRA de pelo menos duas fraternidades.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Falhamos em Rejeitar a Hipótese Nula (H0).&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Não há evidências de uma diferença significativa entre as médias de CRA das fraternidades.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-29-4246962578.py:3: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(data=df, x=&#39;CRA&#39;, y=&#39;Fraternidade&#39;, palette=&#39;plasma&#39;)
+</pre></div>
+</div>
+<img alt="../_images/90babb40828e72d9930140f488817bd4dda30114593926b32c7ef4b4163e5d8c.png" src="../_images/90babb40828e72d9930140f488817bd4dda30114593926b32c7ef4b4163e5d8c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estatística F: 23.7622
+P-valor da ANOVA: 0.0000000000
+
+Rejeitamos a Hipótese Nula (H0).
+Existe uma diferença estatisticamente significativa entre as médias de CRA de pelo menos duas fraternidades.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="quiz-do-conteudo">
+<h2>Quiz do Conteúdo<a class="headerlink" href="#quiz-do-conteudo" title="Link to this heading">#</a></h2>
+<section id="questoes">
+<h3>Questões<a class="headerlink" href="#questoes" title="Link to this heading">#</a></h3>
+<p><em>Responda às seguintes perguntas com base em seus conhecimentos de estatística aplicada à ciência de dados. As respostas explicadas estarão no fim do questionário</em></p>
+<p><strong>1. Teste de Botão em E-commerce</strong>
+Uma empresa de e-commerce quer testar se um novo design de botão de “comprar” (versão B) aumenta a taxa de cliques em comparação com o design atual (versão A). Qual é a hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) correta para este teste A/B?</p>
+<p>a) A taxa de cliques do botão B é maior que a do botão A.</p>
+<p>b) A taxa de cliques do botão B é diferente da do botão A.</p>
+<p>c) Não há diferença na taxa de cliques entre o botão A e o botão B.</p>
+<p>d) O novo design do botão B é visualmente mais atraente.</p>
+<p><strong>2. Interpretando o P-valor</strong>
+Ao analisar os resultados do teste A/B do botão, um cientista de dados encontra um p-valor de <span class="math notranslate nohighlight">\(0,03\)</span>. Se o nível de significância (<span class="math notranslate nohighlight">\(\alpha\)</span>) foi definido em <span class="math notranslate nohighlight">\(0,05\)</span>, qual é a conclusão correta?</p>
+<p>a) Rejeitar a hipótese nula, concluindo que o novo botão tem uma taxa de cliques significativamente diferente.</p>
+<p>b) Aceitar a hipótese nula, concluindo que não há diferença entre os botões.</p>
+<p>c) Aumentar o tamanho da amostra, pois o resultado não é conclusivo.</p>
+<p>d) O teste falhou, pois o p-valor deveria ser exatamente 0,05.</p>
+<p><strong>3. Comparando o Uso do App</strong>
+Uma equipe de produto acredita que os usuários de Android passam mais tempo no aplicativo do que os usuários de iOS. Eles coletam dados de 1.000 usuários de cada plataforma. Qual teste estatístico seria mais apropriado para verificar essa hipótese?</p>
+<p>a) Teste Qui-quadrado de independência.</p>
+<p>b) Teste t de duas amostras independentes.</p>
+<p>c) Regressão Linear.</p>
+<p>d) Análise de Variância (ANOVA).</p>
+<p><strong>4. Erros em Estudos Clínicos</strong>
+Em um estudo clínico para testar um novo medicamento, a hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) é definida como: “A eficácia do novo medicamento é igual à do placebo”. Nesse contexto, o que significaria cometer um erro do Tipo I (falso positivo)?</p>
+<p>a) Concluir que o medicamento não tem efeito, quando na verdade ele tem.</p>
+<p>b) Concluir que o medicamento tem um efeito superior ao placebo, quando na
+verdade não tem.</p>
+<p>c) Concluir que o placebo é mais eficaz que o medicamento.</p>
+<p>d) Utilizar o teste estatístico errado para analisar os dados.</p>
+<p><strong>5. Análise em Redes Sociais</strong>
+Uma rede social quer saber se a proporção de usuários que postam fotos é a mesma entre adolescentes e adultos. Qual teste é o mais indicado para comparar essas duas proporções?</p>
+<p>a) Teste t pareado.</p>
+<p>b) Teste Z para duas proporções.</p>
+<p>c) Correlação de Pearson.</p>
+<p>d) Teste de Kolmogorov-Smirnov.</p>
+<p><strong>6. O Problema dos Testes Múltiplos</strong>
+Um analista de marketing realiza 20 testes A/B em um site, cada um com um nível de significância <span class="math notranslate nohighlight">\(\alpha = 0,05\)</span>. Qual é a probabilidade de ele cometer pelo menos um erro do Tipo I (obter um falso positivo) em algum desses 20 testes, assumindo que nenhuma das mudanças tem efeito real?</p>
+<p>a) Exatamente 5%.</p>
+<p>b) Impossível de calcular sem mais dados.</p>
+<p>c) Cerca de 64%.</p>
+<p>d) 100%, pois <span class="math notranslate nohighlight">\(20 \times 0,05 = 1\)</span>.</p>
+<p><strong>7. Otimização de Rotas Logísticas</strong>
+Uma empresa de logística implementou uma nova rota e quer provar que o tempo médio de entrega diminuiu. A média anterior era de 45 minutos. Após a mudança, uma amostra de 50 entregas mostrou uma média de 42 minutos. Qual é a hipótese alternativa (<span class="math notranslate nohighlight">\(H_a\)</span>) correta para este cenário?</p>
+<p>a) A nova média de tempo de entrega é igual a 45 minutos. (<span class="math notranslate nohighlight">\(\mu = 45\)</span>)</p>
+<p>b) A nova média de tempo de entrega é diferente de 45 minutos. (<span class="math notranslate nohighlight">\(\mu \ne 45\)</span>)</p>
+<p>c) A nova média de tempo de entrega é menor que 45 minutos. (<span class="math notranslate nohighlight">\(\mu &lt; 45\)</span>)</p>
+<p>d) A nova média de tempo de entrega é maior que 42 minutos. (<span class="math notranslate nohighlight">\(\mu &gt; 42\)</span>)</p>
+<p><strong>8. Conceito de Poder Estatístico</strong>
+O que significa o “poder estatístico” de um teste?</p>
+<p>a) A probabilidade de rejeitar corretamente uma hipótese nula falsa.</p>
+<p>b) A probabilidade de que a hipótese nula seja verdadeira.</p>
+<p>c) O tamanho do efeito observado no estudo.</p>
+<p>d) A probabilidade de cometer um erro do Tipo I.</p>
+<p><strong>9. Associação entre Variáveis Categóricas</strong>
+Uma pesquisa quer verificar se existe associação entre o nível de escolaridade (fundamental, médio, superior) e a preferência por uma plataforma de streaming (A, B ou C). Qual teste estatístico é o mais adequado?</p>
+<p>a) Análise de Variância (ANOVA).</p>
+<p>b) Teste t de amostras independentes.</p>
+<p>c) Teste Qui-quadrado de independência.</p>
+<p>d) Regressão Logística.</p>
+<p><strong>10. Interpretando um P-valor Alto</strong>
+Um cientista de dados realiza um teste de hipótese e obtém um p-valor de <span class="math notranslate nohighlight">\(0,25\)</span>. Qual das seguintes é a interpretação mais correta desse resultado?</p>
+<p>a) Há uma probabilidade de 25% de que a hipótese nula seja verdadeira.</p>
+<p>b) Há uma probabilidade de 25% de que os resultados observados ocorreram
+por acaso, se a hipótese nula for verdadeira.</p>
+<p>c) O resultado é estatisticamente significativo e a hipótese nula deve ser rejeitada.</p>
+<p>d) A hipótese alternativa é definitivamente falsa.</p>
+</section>
+<section id="respostas">
+<h3>Respostas<a class="headerlink" href="#respostas" title="Link to this heading">#</a></h3>
+<p><strong>1. Alternativa correta: c)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> A hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) é sempre a afirmação de “status quo” ou ausência de efeito. Ela postula que qualquer diferença observada entre os grupos (neste caso, as taxas de clique dos botões A e B) é meramente fruto do acaso. O objetivo do teste estatístico é determinar se há evidências suficientes para rejeitar essa afirmação.</p></li>
+</ul>
+<p><strong>2. Alternativa correta: a)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> A regra de decisão em um teste de hipóteses é comparar o p-valor com o nível de significância (<span class="math notranslate nohighlight">\(\alpha\)</span>). Se o p-valor &lt; <span class="math notranslate nohighlight">\(\alpha\)</span>, rejeitamos a hipótese nula. Como <span class="math notranslate nohighlight">\(0,03 &lt; 0,05\)</span>, temos evidências estatisticamente significativas para concluir que o novo design do botão causou uma mudança na taxa de cliques.</p></li>
+</ul>
+<p><strong>3. Alternativa correta: b)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> O problema consiste em comparar a média de uma variável contínua (“tempo no aplicativo”) entre dois grupos independentes (“usuários de Android” e “usuários de iOS”). O teste t de duas amostras independentes é a ferramenta estatística padrão para este cenário.</p></li>
+</ul>
+<p><strong>4. Alternativa correta: b)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> Um erro do Tipo I ocorre quando rejeitamos uma hipótese nula que, na verdade, é verdadeira. A hipótese nula (<span class="math notranslate nohighlight">\(H_0\)</span>) afirma que o medicamento não é mais eficaz que o placebo. Rejeitar <span class="math notranslate nohighlight">\(H_0\)</span> significa concluir que ele tem efeito. Se <span class="math notranslate nohighlight">\(H_0\)</span> for verdadeira, essa conclusão é um erro – um “falso positivo”.</p></li>
+</ul>
+<p><strong>5. Alternativa correta: b)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> O objetivo é comparar a proporção de uma característica (postar fotos) entre duas populações independentes (adolescentes e adultos). O Teste Z para duas proporções é o método estatístico projetado exatamente para essa finalidade.</p></li>
+</ul>
+<p><strong>6. Alternativa correta: c)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> Este é um problema de comparações múltiplas. A probabilidade de <em>não</em> cometer um erro do Tipo I em um único teste é de <span class="math notranslate nohighlight">\(1 - 0,05 = 0,95\)</span>. A probabilidade de isso acontecer em 20 testes independentes é <span class="math notranslate nohighlight">\(0,95^{20} \approx 0,358\)</span>. Portanto, a probabilidade de cometer <em>pelo menos um</em> erro do Tipo I é <span class="math notranslate nohighlight">\(1 - 0,358 = 0,642\)</span>, ou cerca de 64%.</p></li>
+</ul>
+<p><strong>7. Alternativa correta: c)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> A hipótese alternativa (<span class="math notranslate nohighlight">\(H_a\)</span> ou <span class="math notranslate nohighlight">\(H_1\)</span>) representa a alegação que o pesquisador quer provar. A empresa quer demonstrar que o tempo de entrega <em>diminuiu</em> em relação à média anterior de 45 minutos. Isso corresponde a uma hipótese unilateral (direcional), expressa como <span class="math notranslate nohighlight">\(\mu &lt; 45\)</span>.</p></li>
+</ul>
+<p><strong>8. Alternativa correta: a)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> O poder estatístico é a capacidade de um teste detectar um efeito quando ele realmente existe. Matematicamente, é a probabilidade de rejeitar corretamente uma hipótese nula falsa. Um teste com alto poder tem baixa chance de cometer um erro do Tipo II (um “falso negativo”).</p></li>
+</ul>
+<p><strong>9. Alternativa correta: c)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> Estamos analisando a relação entre duas variáveis categóricas: “nível de escolaridade” (com três categorias) e “preferência de plataforma” (com três categorias). O Teste Qui-quadrado de independência é usado para determinar se existe uma associação estatisticamente significativa entre essas variáveis.</p></li>
+</ul>
+<p><strong>10. Alternativa correta: b)</strong></p>
+<ul class="simple">
+<li><p><strong>Razão:</strong> O p-valor é a probabilidade de obter os dados observados (ou dados ainda mais extremos), <em>assumindo que a hipótese nula é verdadeira</em>. Um p-valor alto, como 0,25, significa que os dados não são surpreendentes sob a <span class="math notranslate nohighlight">\(H_0\)</span> e, portanto, não temos evidências para rejeitá-la. Ele não mede a probabilidade de a <span class="math notranslate nohighlight">\(H_0\)</span> ser verdadeira.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="projeto-do-dia-4">
+<h1>Projeto do Dia 4!<a class="headerlink" href="#projeto-do-dia-4" title="Link to this heading">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aulas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Data_Mining_e_Clustering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Mining e Clustering, extraindo novas informações.</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="projetos/Projeto-dia04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Projeto - Dia 4: Testes e Hipóteses</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hipóteses e testes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-estatistica-e-formulacao-de-hipoteses">Inferência estatística e formulação de hipóteses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-inferencia-estatistica">O que é Inferência Estatística?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipoteses-nula-e-alternativa">Hipóteses: Nula e Alternativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erros-tipo-i-e-ii">Erros Tipo I e II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-valor-e-intervalo-de-confianca">p-valor e Intervalo de Confiança</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-quiz-interativo">Mini quiz interativo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-teste-e-quando-usar">Tipos de teste e quando usar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrico-vs-nao-parametrico">Paramétrico vs. Não-paramétrico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premissas-essenciais-dos-testes-parametricos">Premissas Essenciais dos Testes Paramétricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuicao-normal-gaussiana">1. Distribuição Normal (Gaussiana)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homogeneidade-de-variancias-homocedasticidade">2. Homogeneidade de Variâncias (Homocedasticidade)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxograma-de-decisao-aprimorado">Fluxograma de Decisão Aprimorado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testes-abordados-na-pratica">Testes Abordados na Prática</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-com-testes-no-python">Prática com testes no Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-1-teste-de-medias">Prática 4 parte 1: Teste de Médias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-1-teste-de-medias-com-o-dataset-da-ufad">Prática 4 parte 1: Teste de Médias com o dataset da UFAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratica-4-parte-2-associacao-entre-variaveis-categoricas-na-ufad">Prática 4 parte 2: Associação entre variáveis categóricas na UFAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-bonus-teste-de-medias-com-mais-de-dois-grupos-anova">Exemplo Bônus: Teste de Médias com Mais de Dois Grupos (ANOVA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-do-conteudo">Quiz do Conteúdo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questoes">Questões</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#respostas">Respostas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-do-dia-4">Projeto do Dia 4!</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PET CC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
